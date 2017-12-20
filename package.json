@@ -1,0 +1,30 @@
+{
+  "name": "news_reactdom",
+  "version": "1.0.0",
+  "description": "This is a News App coding in React Js,just for my reactdom learnning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yxnne/News_reactdom.git"
+  },
+  "author": "yxnne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yxnne/News_reactdom/issues"
+  },
+  "homepage": "https://github.com/yxnne/News_reactdom#readme",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1"
+  }
+}
