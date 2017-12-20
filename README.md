@@ -35,3 +35,20 @@ cnpm i --save react-router-dom
 6.antd
 
 cnpm i --save antd
+
+7.MeadiaQuery是响应式的支持
+
+cnpm i --save react-responsive
+```
+<MediaQuery query='(min-width: 1400px)'>
+  <PCIndex/>
+</MediaQuery>
+
+{/* Moblie */}
+<MediaQuery query='(max-Width: 1400px)'>
+  <MobileIndex/>
+</MediaQuery>
+
+```
+
+使用 max-Width/ min-width暂时比使用 min-device-width / max-device-width更符合要求

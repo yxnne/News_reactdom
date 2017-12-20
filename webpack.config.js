@@ -16,7 +16,7 @@ module.exports = {
     {
       //css模块化设置
       test : /\.css$/,
-      //下面是ant-design的样式
+      //ant-design样式需要这样
       loader : 'style-loader!css-loader'
     },
     ]

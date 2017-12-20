@@ -1,24 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Index from './index.js';
-import { Button } from 'antd';
 //Router
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
+//antd
+import { Button } from 'antd';
 //antd样式引入
 import 'antd/dist/antd.css';
+//react-responsive MeadiaQuery
+import  MediaQuery  from 'react-responsive';
 
-const AntdTestComponent =()=>(
-  <div>
-    <Button type="primary">Primary</Button>
-    <Button>Default</Button>
-    <Button type="dashed">Dashed</Button>
-    <Button type="danger">Danger</Button>
-  </div>
-);
+import PCIndex from './components/pc_index.js';
+import MobileIndex from './components/mobile_index.js';
 
 class Root extends React.Component{
 
@@ -26,17 +22,15 @@ class Root extends React.Component{
     //这里是程序入口
     return (
         <div>
-          <Router>
-            <Switch>
+          {/* PC */}
+          <MediaQuery query='(min-width: 1400px)'>
+            <PCIndex/>
+          </MediaQuery>
 
-              <Route exact path="/" component={Index}></Route>
-
-
-              <Route path="/antd" component={AntdTestComponent}/>
-
-
-            </Switch>
-          </Router>
+          {/* Moblie */}
+          <MediaQuery query='(max-Width: 1400px)'>
+            <MobileIndex/>
+          </MediaQuery>
         </div>
     )
   }
