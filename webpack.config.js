@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   context : __dirname + '/src',
-  entry   : "./js/index.js",
+  entry   : "./js/root.js",
   module  : {
     loaders   :[{
       test : /.js?$/,
@@ -12,7 +12,14 @@ module.exports = {
       query :{
         presets:['react' , 'babel-preset-react']
       }
-    }]
+    },
+    {
+      //css模块化设置
+      test : /\.css$/,
+      //下面是ant-design的样式
+      loader : 'style-loader!css-loader'
+    },
+    ]
   },
   output:{
     path:__dirname + "/src/",
@@ -20,6 +27,7 @@ module.exports = {
   },
   devServer:{
     //我们在这里对webpack-dev-server进行配置
-    port:18080
+    port:18080,
+    historyApiFallback:true
   }
 };
