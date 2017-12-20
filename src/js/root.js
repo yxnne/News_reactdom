@@ -23,12 +23,12 @@ class Root extends React.Component{
     return (
         <div>
           {/* PC */}
-          <MediaQuery query='(min-width: 1400px)'>
+          <MediaQuery query='(min-width: 1224px)'>
             <PCIndex/>
           </MediaQuery>
 
           {/* Moblie */}
-          <MediaQuery query='(max-Width: 1400px)'>
+          <MediaQuery query='(max-Width: 1224px)'>
             <MobileIndex/>
           </MediaQuery>
         </div>
