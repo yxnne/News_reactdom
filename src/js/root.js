@@ -39,5 +39,5 @@ class Root extends React.Component{
 
 ReactDOM.render(
    <Root />,
-   document.getElementById('test')
+   document.getElementById('root')
  );
