@@ -25,6 +25,14 @@ class MobileHeader extends React.Component{
     };
   }
 
+  //声明周期方法：刷新之后将会执行
+  componentWillMount(){
+    //实际项目中校验复杂了
+    if (localStorage.userid!='') {
+      this.setState({hasLogined:true});
+      this.setState({userNickName:localStorage.userNickName,userid:localStorage.userid});
+    }
+  }
 
   setModalVisible(value){
     this.setState({modalVisiable:value});
@@ -48,29 +56,52 @@ class MobileHeader extends React.Component{
     };
 
     this.props.form.validateFields((err, formData) => {
-      if (!err) {
-        // value 就是获取的值对象
-        console.log('Received formData of form: ', formData);
 
-        //使用fetch 获取数据
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=register"
-		    +"&r_userName=" + formData.r_userName + "&r_password="
-		    + formData.r_password + "&r_confirmPassword="
-		    + formData.r_confirmPassword, fetchOptions)
-        .then(response=>response.json())
-        .then(json=>{
-          this.setState({userNickName: json.NickUserName, userid: json.UserId});
-        });
-        {/*弹窗并关闭模态框*/}
-        message.success("success !");
-        this.setModalVisible(false);
+      // value 就是获取的值对象
+      console.log('Received formData of form: ', formData);
 
+      //使用fetch 获取数据
+      fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=" + this.state.action
+      +"&userName=" + formData.userName + "&password=" + formData.password
+      +"&r_userName=" + formData.r_userName + "&r_password="
+      + formData.r_password + "&r_confirmPassword="
+      + formData.r_confirmPassword, fetchOptions)
+      .then(response=>response.json())
+      .then(json=>{
+        this.setState({userNickName: json.NickUserName, userid: json.UserId});
+        localStorage.userid= json.UserId;
+        localStorage.userNickName = json.NickUserName;
+      });
+      if (this.state.action=="login"){
+        this.setState({hasLogined:true});
       }
+      {/*弹窗并关闭模态框*/}
+      message.success("success !");
+      this.setModalVisible(false);
+
+
     });
   }
 
   login(){
     this.setModalVisible(true);
+  }
+
+    tabCallback(key){
+    if (key == 1){
+      this.setState({action:'login'});
+
+    }else if (key == 2){
+      this.setState({action:'register'});
+    }
+  }
+
+  //处理登出逻辑
+  logout(){
+    console.log("press");
+    localStorage.userid= '';
+    localStorage.userNickName = '';
+    this.setState({hasLogined:false});
   }
 
   render(){
@@ -79,11 +110,16 @@ class MobileHeader extends React.Component{
     let {getFieldDecorator,getFieldError, isFieldTouched} = this.props.form;
 
     const userShow = this.state.hasLogined?
-    <Link>
-      <Icon type="inbox" />
-    </Link>
+    <div>
+    {/*<Link>*/}
+      <Icon type="logout" onClick={this.logout.bind(this)} />
+      <Icon type="user" />
+    {/*</Link>*/}
+      
+    </div>
     :
     <Icon type="setting" onClick={this.login.bind(this)} />
+
     return (
       <div id="mobileheader">
         <header>
@@ -98,7 +134,32 @@ class MobileHeader extends React.Component{
         onOk={()=>this.setModalVisible(false)}
         okText="关闭">
           {/*Tab页中分别是注册和登录*/}
-          <Tabs type="card">
+          <Tabs type="card" onChange={this.tabCallback.bind(this)}>
+            {/*登录*/}
+            <TabPane tab="Login" key="1">
+              <Form onSubmit={this.handleSubmit.bind(this)}>
+
+                <FormItem label="User Name">
+                  {getFieldDecorator('userName', {
+                    rules: [{ required: true, message: 'Please input your username!' }],
+                  })(
+                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                  )}
+                </FormItem>
+
+                <FormItem label="Password">
+                  {getFieldDecorator('password', {
+                    rules: [{ required: true, message: 'Please input your password!' }],
+                  })(
+                    <Input type="password" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Password" />
+                  )}
+                </FormItem>
+                <Button type="primary" htmlType="submit">Login</Button>
+
+              </Form>
+            </TabPane>
+
+            {/*注册*/}
             <TabPane tab="Register" key="2">
               <Form onSubmit={this.handleSubmit.bind(this)}>
 

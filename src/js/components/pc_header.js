@@ -25,6 +25,14 @@ class PCHeader extends React.Component{
     };
   }
 
+  //声明周期方法：刷新之后将会执行
+  componentWillMount(){
+    //实际项目中校验复杂了
+    if (localStorage.userid!='') {
+      this.setState({hasLogined:true});
+      this.setState({userNickName:localStorage.userNickName,userid:localStorage.userid});
+    }
+  }
 
   setModalVisible(value){
     this.setState({modalVisiable:value});
@@ -49,30 +57,33 @@ class PCHeader extends React.Component{
 
     this.props.form.validateFields((err, formData) => {
       //if (!err) {
-        // value 就是获取的值对象
-        console.log('Received formData of form: ', formData);
+      // value 就是获取的值对象
+      console.log('Received formData of form: ', formData);
 
-        //使用fetch 获取数据
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=" + this.state.action
-        +"&userName=" + formData.userName + "&password=" + formData.password
-		    +"&r_userName=" + formData.r_userName + "&r_password="
-		    + formData.r_password + "&r_confirmPassword="
-		    + formData.r_confirmPassword, fetchOptions)
-        .then(response=>response.json())
-        .then(json=>{
-          this.setState({userNickName: json.NickUserName, userid: json.UserId});
-        });
-        if (this.state.action=="login"){
-          this.setState({hasLogined:true});
-        }
-        {/*弹窗并关闭模态框*/}
-        message.success("success !");
-        this.setModalVisible(false);
+      //使用fetch 获取数据
+      fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=" + this.state.action
+      +"&userName=" + formData.userName + "&password=" + formData.password
+	    +"&r_userName=" + formData.r_userName + "&r_password="
+	    + formData.r_password + "&r_confirmPassword="
+	    + formData.r_confirmPassword, fetchOptions)
+      .then(response=>response.json())
+      .then(json=>{
+        this.setState({userNickName: json.NickUserName, userid: json.UserId});
+        //将信息存储到浏览器本地
+        localStorage.userid= json.UserId;
+        localStorage.userNickName = json.NickUserName;
+      });
+      if (this.state.action=="login"){
+        this.setState({hasLogined:true})
+      }
+      {/*弹窗并关闭模态框*/}
+      message.success("success !");
+      this.setModalVisible(false);
 
       //}
     });
   }
-
+  //切换Tab
   tabCallback(key){
     if (key == 1){
       this.setState({action:'login'});
@@ -80,6 +91,13 @@ class PCHeader extends React.Component{
     }else if (key == 2){
       this.setState({action:'register'});
     }
+  }
+
+  //登出
+  logout(){
+    localStorage.userid= '';
+    localStorage.userNickName = '';
+    this.setState({hasLogined:false});
   }
 
   render(){
@@ -93,17 +111,15 @@ class PCHeader extends React.Component{
     <Menu.Item key="logout" className="register">
       <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
       &nbsp;&nbsp;
-
-
+      {/*<Link>*/}
         <Button type="dashed" htmlType="button">Profile</Button>
-
-
+      {/*</Link>*/}
       &nbsp;&nbsp;
-      <Button type="ghost" htmlType="button">Logout</Button>
+      <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>Logout</Button>
     </Menu.Item>
     :
     <Menu.Item key="register" className="register">
-      <Icon type="appstore" />注册 / 登录
+      <Icon type="appstore" />Login / Register
     </Menu.Item>;
 
     const userNameError = isFieldTouched('userName') && getFieldError('userName');
