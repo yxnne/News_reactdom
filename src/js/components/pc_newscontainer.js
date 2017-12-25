@@ -13,6 +13,7 @@ export default class PCNewsContainer extends React.Component{
       infinite:true,
       speed:500,
       slidesToShow:1,
+      effect:"fade",
       autoplay:true
     };
     const list = [1,2,3];
@@ -28,14 +29,13 @@ export default class PCNewsContainer extends React.Component{
             <Col span={20} className="container">
 
               <div className="leftContainer">
-
                 {/*轮播图 carousel */}
                 <div className="carousel">
-                  <Carousel {...settings}>
-                    <div><img src="./images/carousel_1.png"/></div>
-                    <div><img src="./images/carousel_2.png"/></div>
-                    <div><img src="./images/carousel_3.png"/></div>
-                    <div><img src="./images/carousel_4.png"/></div>
+                  <Carousel   {...settings} >
+                      <div><img src="./images/carousel_1.jpg"></img></div>
+                      <div><img src="./images/carousel_2.jpg"></img></div>
+                      <div><img src="./images/carousel_3.jpg"></img></div>
+                      <div><img src="./images/carousel_4.jpg"></img></div>
                   </Carousel>
                 </div>
 
