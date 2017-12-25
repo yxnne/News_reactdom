@@ -15,7 +15,7 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'babel-preset-react'],
+          presets: ['react','babel-preset-env'],
           plugins: [
             ['import', {
               libraryName: "antd",
