@@ -71,15 +71,14 @@ class MobileHeader extends React.Component{
         this.setState({userNickName: json.NickUserName, userid: json.UserId});
         localStorage.userid= json.UserId;
         localStorage.userNickName = json.NickUserName;
+        if (this.state.action=="login"){
+          this.setState({hasLogined:true});
+        }
       });
-      if (this.state.action=="login"){
-        this.setState({hasLogined:true});
-      }
+
       {/*弹窗并关闭模态框*/}
       message.success("success !");
       this.setModalVisible(false);
-
-
     });
   }
 
@@ -115,7 +114,7 @@ class MobileHeader extends React.Component{
       <Icon type="logout" onClick={this.logout.bind(this)} />
       <Icon type="user" />
     {/*</Link>*/}
-      
+
     </div>
     :
     <Icon type="setting" onClick={this.login.bind(this)} />

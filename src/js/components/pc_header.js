@@ -72,10 +72,11 @@ class PCHeader extends React.Component{
         //将信息存储到浏览器本地
         localStorage.userid= json.UserId;
         localStorage.userNickName = json.NickUserName;
+        if (this.state.action=="login"){
+          this.setState({hasLogined:true})
+        }
       });
-      if (this.state.action=="login"){
-        this.setState({hasLogined:true})
-      }
+
       {/*弹窗并关闭模态框*/}
       message.success("success !");
       this.setModalVisible(false);
