@@ -24,9 +24,74 @@
 .leftContainer{
   width: 400px;
   float: left;
+  margin-right: 10px;
 }
 
+.ant-card{
+  margin-top: 5px !important;
+}
+
+.ant-card-head-title{
+  text-align: left !important;
+}
+.ant-card-body{
+  text-align: left !important;
+}
+.usercenter {
+    float: right !important;
+}
 .carousel{
   width: 400px;
   float: left;
+}
+
+.carousel img {
+    width: 400px;
+    height: 260px;
+}
+
+.topNewsList {
+    float: left;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.topNewsList a {
+    line-height: 22px !important;
+    color: #666 !important;
+}
+
+.tabs_news {
+    padding-left: 10px;
+    width: 460px;
+    float: left;
+}
+
+.tabs_product {
+    width: 300px;
+    padding-left: 10px;
+    float: left;
+}
+.tabs_news li {
+    height: 27px;
+    line-height: 27px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 400px;
+    float: left;
+    text-overflow: ellipsis;
+}
+
+.imageblock {
+    float: left;
+}
+
+.custom-card {
+    padding: 5px;
+}
+
+.custom-card p {
+    color: #999;
 }
