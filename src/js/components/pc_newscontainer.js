@@ -13,13 +13,10 @@ export default class PCNewsContainer extends React.Component{
       infinite:true,
       speed:500,
       slidesToShow:1,
-      effect:"fade",
+      effect:"slide",
       autoplay:true
     };
     const list = [1,2,3];
-
-    console.log(...list);
-    console.log("???");
 
     return (
         <div>
