@@ -37,7 +37,7 @@ export default class PCNewsContainer extends React.Component{
                   </Carousel>
                 </div>
 
-                <PCNewsImageBlock count={6} type="guoji" width="400px" cartTitle="国际头条" imageWidth="112px"/>
+                <PCNewsImageBlock count={6} type="guoji" width="400px" cardTitle="国际头条" imageWidth="100px"/>
               </div>
 
               {/* Tabs右侧切换新闻 */}
@@ -54,8 +54,8 @@ export default class PCNewsContainer extends React.Component{
 
               {/* 图片新闻模块 */}
               <div>
-                <PCNewsImageBlock count={8} type="guonei" width="100%" cartTitle="国内新闻" imageWidth="132px"/>
-                <PCNewsImageBlock count={16} type="yule" width="100%" cartTitle="娱乐新闻" imageWidth="132px"/>
+                <PCNewsImageBlock count={8} type="guonei" width="100%" cardTitle="国内新闻" imageWidth="128px"/>
+                <PCNewsImageBlock count={16} type="yule" width="100%" cardTitle="娱乐新闻" imageWidth="128px"/>
               </div>
 
             </Col>
