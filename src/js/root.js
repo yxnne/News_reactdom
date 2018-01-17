@@ -15,6 +15,8 @@ import  MediaQuery  from 'react-responsive';
 
 import PCIndex from './components/pc_index.js';
 import MobileIndex from './components/mobile_index.js';
+import PCNewsDetails from './components/pc_news_detail.js';
+
 
 class Root extends React.Component{
 
@@ -24,7 +26,12 @@ class Root extends React.Component{
         <div>
           {/* PC */}
           <MediaQuery query='(min-width: 1224px)'>
-            <PCIndex/>
+            <Router>
+              <Switch>
+                <Route exact path="/" component={PCIndex}/>
+                <Route path="/details/:uniquekey" component={PCNewsDetails}/>
+              </Switch>
+            </Router>
           </MediaQuery>
 
           {/* Moblie */}
