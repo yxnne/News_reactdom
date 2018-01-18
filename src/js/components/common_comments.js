@@ -46,10 +46,22 @@ class CommonComments extends React.Component {
         this.componentDidMount();
       });
     });
-
-
-
   };
+
+  addUserCollection() {
+		var myFetchOptions = {
+			method: 'GET'
+		};
+		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid="
+    + localStorage.userid + "&uniquekey=" + this.props.uniquekey, myFetchOptions)
+    .then(response => response.json())
+    .then(json => {
+			//收藏成功以后进行一下全局的提醒
+      console.log("json is ....",json);
+			notification['success']({message: 'ReactNews提醒', description: '收藏此文章成功'});
+		});
+	};
+
   render(){
       const { getFieldDecorator } = this.props.form
       const {comments} = this.state;
@@ -78,6 +90,8 @@ class CommonComments extends React.Component {
                 </FormItem>
 
                 <Button type="primary" htmlType="submit">提交评论</Button>
+                &nbsp;&nbsp;
+                <Button type="primary" htmlType="button" onClick={this.addUserCollection.bind(this)}>收藏该文章</Button>
 
               </Form>
               <hr />
