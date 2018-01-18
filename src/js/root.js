@@ -17,6 +17,8 @@ import PCIndex from './components/pc_index.js';
 import MobileIndex from './components/mobile_index.js';
 import PCNewsDetails from './components/pc_news_detail.js';
 import MobileNewsDetails from './components/mobile_news_detail.js';
+import PCUserCenter from './components/pc_user_center.js';
+import MobileUserCenter from './components/mobile_user_center.js';
 
 
 class Root extends React.Component{
@@ -31,6 +33,7 @@ class Root extends React.Component{
               <Switch>
                 <Route exact path="/" component={PCIndex}/>
                 <Route path="/details/:uniquekey" component={PCNewsDetails}/>
+                <Route path="/usercenter" component={PCUserCenter}/>
               </Switch>
             </Router>
           </MediaQuery>
@@ -41,6 +44,7 @@ class Root extends React.Component{
               <Switch>
                 <Route exact path="/" component={MobileIndex}/>
                 <Route path="/details/:uniquekey" component={MobileNewsDetails}/>
+                <Route path="/usercenter" component={MobileUserCenter}/>
               </Switch>
             </Router>
           </MediaQuery>

@@ -109,14 +109,16 @@ class PCHeader extends React.Component{
     //三元表达式，根据用户的登录状态进行显示不同内容
     const userShow = this.state.hasLogined
     ?
-    <Menu.Item key="logout" className="register">
+    <Menu.Item key="logout" >
+      <div className="register">
       <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
-      &nbsp;&nbsp;
-      {/*<Link>*/}
+      &nbsp; &nbsp;
+      <Link to="/usercenter">
         <Button type="dashed" htmlType="button">Profile</Button>
-      {/*</Link>*/}
+      </Link>
       &nbsp;&nbsp;
       <Button type="ghost" htmlType="button" onClick={this.logout.bind(this)}>Logout</Button>
+      </div>
     </Menu.Item>
     :
     <Menu.Item key="register" className="register">
@@ -157,12 +159,15 @@ class PCHeader extends React.Component{
                 <Menu.Item key="tiyu">
                   Sport
                 </Menu.Item>
+
                 <Menu.Item key="keji">
                   Technology
                 </Menu.Item>
+
                 <Menu.Item key="shishang">
                   Vogue
                 </Menu.Item>
+                {/**/}
                 {/*根据用户的状态 显示不同组件 但都是menuitem 定义在上面*/}
                 {userShow}
               </Menu>

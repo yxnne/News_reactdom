@@ -110,11 +110,11 @@ class MobileHeader extends React.Component{
 
     const userShow = this.state.hasLogined?
     <div>
-    {/*<Link>*/}
-      <Icon type="logout" onClick={this.logout.bind(this)} />
+    {/*到用户中心的链接*/}
+    <Link to={`/usercenter`} target="_blank">
       <Icon type="user" />
-    {/*</Link>*/}
-
+    </Link>
+    <Icon type="logout" onClick={this.logout.bind(this)} />
     </div>
     :
     <Icon type="setting" onClick={this.login.bind(this)} />
