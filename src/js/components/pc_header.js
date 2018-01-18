@@ -132,7 +132,7 @@ class PCHeader extends React.Component{
             <Col span={3}>
               <a href="/" className="logo">
                 {/*js打包了之后的bundle.js是在src下面 所以注意这个资源路径*/}
-                <img src="images/logo.png" alt="logo" />
+                <img src="/images/logo.png" alt="logo" />
                 <span>News</span>
               </a>
             </Col>

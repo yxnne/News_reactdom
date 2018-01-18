@@ -37,7 +37,7 @@ export default class MobileList extends React.Component{
     news.map((newsItem,index)=>{
       return (
         <section key={index} className="m_article list-item special_section clearfix">
-          {/* <Link to={'details/$(newsItem.uniquekey)'} target="_blank">*/}
+          <Link to={`details/${newsItem.uniquekey} `} target="_blank">
             <div className="m_article_img">
               <img src={newsItem.thumbnail_pic_s} alt={newsItem.title} />
             </div>
@@ -52,7 +52,7 @@ export default class MobileList extends React.Component{
                 </div>
               </div>
             </div>
-          {/* <Link />*/}
+          </Link>
         </section>
       )
     })
