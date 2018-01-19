@@ -4,7 +4,7 @@ import {Row , Col } from 'antd';
 import {Tabs,Carousel,Card} from 'antd';
 import PCNewsBlock from './pc_news_block'
 import PCNewsImageBlock from './pc_news_image_block';
-
+import PCProduct from './pc_products';
 const TabPane = Tabs.TabPane;
 
 export default class PCNewsContainer extends React.Component{
@@ -52,6 +52,7 @@ export default class PCNewsContainer extends React.Component{
                 </Tabs>
               </Card>
 
+
               {/* 图片新闻模块 */}
               <div>
                 <PCNewsImageBlock count={8} type="guonei" width="100%" cardTitle="国内新闻" imageWidth="128px"/>
@@ -59,6 +60,15 @@ export default class PCNewsContainer extends React.Component{
               </div>
 
             </Col>
+  {/*这里只是为了测试下直接用现成的HTML转换成jsx
+            <Col span={3}>
+            <Tabs class="tabs_product">
+                <TabPane tab="ReactNews 产品" key="1">
+                  <PCProduct/>
+                </TabPane>
+            </Tabs>
+            </Col>
+   */}
 
             <Col span={2}></Col>
           </Row>

@@ -63,7 +63,7 @@ export default class PCUserCenter extends React.Component{
     };
 
     //收藏
-    const {usercollection} = this.state;
+    const {usercollection, usercomments} = this.state;
     const usercollectionList = usercollection.length ?
     usercollection.map((uc, index)=>(
       <Card key={index} title={uc.uniquekey} hoverable

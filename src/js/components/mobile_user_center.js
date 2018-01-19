@@ -73,6 +73,7 @@ export default class MobileUserCenter extends React.Component{
           <Col span={2}/>
           <Col span={20}>
             <Tabs>
+
               <TabPane key={1} tab="My Colection">
                 <Row>
                   <Col span={24}>
@@ -91,6 +92,7 @@ export default class MobileUserCenter extends React.Component{
 
               <TabPane key={3} tab="My Portrait">
               </TabPane>
+
             </Tabs>
           </Col>
           <Col span={2}/>
